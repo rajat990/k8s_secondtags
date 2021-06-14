@@ -7,6 +7,14 @@ import org.springframework.web.bind.annotation.*;
 @EnableAutoConfiguration
 public class Example {
 
+    @Value("${property.value}")
+    String propertyvalue;
+
+    @RequestMapping(value = "/propertyValue", method = RequestMethod.GET)
+    String propertyvalueMethod(String propertyvalue) {
+        return propertyvalue;
+    }
+
     @RequestMapping(value = "/{msg}", method = RequestMethod.GET)
     String home(@PathVariable("msg") String msg) {
         return msg;
